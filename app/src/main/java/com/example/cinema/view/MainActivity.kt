@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstancedState)
         setContentView(R.layout.activity_main)
         recyclerView = findViewById(R.id.recycler_view)
-        recyclerView!!.setHasFixedSize(true)
-        recyclerView!!.layoutManager = LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val stringRequest = StringRequest(Request.Method.GET, URL,
                 { response ->
