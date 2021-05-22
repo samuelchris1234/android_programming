@@ -29,39 +29,35 @@ class MainActivity : AppCompatActivity() {
         recyclerView!!.setHasFixedSize(true)
         recyclerView!!.layoutManager = LinearLayoutManager(this)
 
-//        val adapter = MovieAdapter(this, movieList)
-//        recyclerView!!.adapter = adapter
-        movieViewModel.loadMovies()
-
-//        val stringRequest = StringRequest(Request.Method.GET, URL,
-//                { response ->
-//                    try {
-//                        val array = JSONArray(response)
-//                        for (i in 0 until array.length()) {
-//                            val movies = array.getJSONObject(i)
-//                            movieList.add(Movie(
-//                                    movies.getString("name"),
-//                                    "http://10.0.2.2:8080/android/" + movies.getString("image"),
-//                                    "Rating : " + movies.getString("rating"),
-//                                    movies.getString("description"),
-//                                    movies.getString("airtime_1"),
-//                                    movies.getString("airtime_2"),
-//                                    movies.getString("airtime_3"),
-//                                    movies.getString("airtime_4"),
-//                                    movies.getString("airtime_5")
-//                            ))
-//                            val adapter = MovieAdapter(this, movieList)
-//                            recyclerView!!.adapter = adapter
-//                        }
-//                    } catch (e: JSONException) {
-//                        e.printStackTrace()
-//                    }
-//                }
-//        ) { }
-//        Volley.newRequestQueue(this).add(stringRequest)
+        val stringRequest = StringRequest(Request.Method.GET, URL,
+                { response ->
+                    try {
+                        val array = JSONArray(response)
+                        for (i in 0 until array.length()) {
+                            val movies = array.getJSONObject(i)
+                            movieList.add(Movie(
+                                    movies.getString("name"),
+                                    "http://10.0.2.2:8080/android/" + movies.getString("image"),
+                                    "Rating : " + movies.getString("rating"),
+                                    movies.getString("description"),
+                                    movies.getString("airtime_1"),
+                                    movies.getString("airtime_2"),
+                                    movies.getString("airtime_3"),
+                                    movies.getString("airtime_4"),
+                                    movies.getString("airtime_5")
+                            ))
+                            val adapter = MovieAdapter(this, movieList)
+                            recyclerView.adapter = adapter
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                }
+        ) { }
+        Volley.newRequestQueue(this).add(stringRequest)
     }
 
-//    companion object {
-//        private const val URL = "http://10.0.2.2:8080/android/movies.php"
-//    }
+    companion object {
+        private const val URL = "http://10.0.2.2:8080/android/movies.php"
+    }
 }

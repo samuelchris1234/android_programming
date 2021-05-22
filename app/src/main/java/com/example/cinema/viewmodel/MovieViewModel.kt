@@ -19,11 +19,14 @@ import java.util.ArrayList
 class MovieViewModel (application: Application) : AndroidViewModel(application) {
 
     private val context = getApplication<Application>().applicationContext
-    private val context1 = getApplication<Application>().baseContext
+
     var movieList: MutableList<Movie> = ArrayList()
-    private var recyclerView: RecyclerView? = null
+    private lateinit var recyclerView: RecyclerView
 
     fun loadMovies(){
+
+        val adapter = MovieAdapter(context, movieList)
+
         val stringRequest = StringRequest(Request.Method.GET, URL,
                 { response ->
                     try {
@@ -41,8 +44,7 @@ class MovieViewModel (application: Application) : AndroidViewModel(application) 
                                     movies.getString("airtime_4"),
                                     movies.getString("airtime_5")
                             ))
-                            val adapter = MovieAdapter(context, movieList)
-                            recyclerView?.adapter = adapter
+                            recyclerView.adapter = adapter
                         }
                     } catch (e: JSONException) {
                         e.printStackTrace()
@@ -50,6 +52,8 @@ class MovieViewModel (application: Application) : AndroidViewModel(application) 
                 }
         ) { }
         Volley.newRequestQueue(context).add(stringRequest)
+
+
     }
 
     companion object {
