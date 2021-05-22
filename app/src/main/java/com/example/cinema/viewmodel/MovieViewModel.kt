@@ -20,7 +20,7 @@ class MovieViewModel (application: Application) : AndroidViewModel(application) 
 
     private val context = getApplication<Application>().applicationContext
     var movieList: MutableList<Movie> = ArrayList()
-    private var recyclerView: RecyclerView
+    private var recyclerView: RecyclerView? = null
 
     fun loadMovies(){
         val stringRequest = StringRequest(Request.Method.GET, URL,
