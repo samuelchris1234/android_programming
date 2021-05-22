@@ -16,48 +16,6 @@ import org.json.JSONArray
 import org.json.JSONException
 import java.util.ArrayList
 
-class MovieViewModel (application: Application) : AndroidViewModel(application) {
-
-    private val context = getApplication<Application>().applicationContext
-
-    var movieList: MutableList<Movie> = ArrayList()
-    private lateinit var recyclerView: RecyclerView
-
-    fun loadMovies(){
-
-        val adapter = MovieAdapter(context, movieList)
-
-        val stringRequest = StringRequest(Request.Method.GET, URL,
-                { response ->
-                    try {
-                        val array = JSONArray(response)
-                        for (i in 0 until array.length()) {
-                            val movies = array.getJSONObject(i)
-                            movieList.add(Movie(
-                                    movies.getString("name"),
-                                    "http://10.0.2.2:8080/android/" + movies.getString("image"),
-                                    "Rating : " + movies.getString("rating"),
-                                    movies.getString("description"),
-                                    movies.getString("airtime_1"),
-                                    movies.getString("airtime_2"),
-                                    movies.getString("airtime_3"),
-                                    movies.getString("airtime_4"),
-                                    movies.getString("airtime_5")
-                            ))
-                            recyclerView.adapter = adapter
-                        }
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
-                }
-        ) { }
-        Volley.newRequestQueue(context).add(stringRequest)
-
-
-    }
-
-    companion object {
-        private const val URL = "http://10.0.2.2:8080/android/movies.php"
-    }
+class MovieViewModel : ViewModel(){
 
 }
