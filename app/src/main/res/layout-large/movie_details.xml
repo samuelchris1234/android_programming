@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".view.MainActivity">
 
-    <ImageView
+    <androidx.recyclerview.widget.RecyclerView
         android:name="com.example.activity_session_6_exercise_2.views.HeadlinesFragment"
-        android:id="@+id/movie_fragment"
+        android:id="@+id/movie_recycler_view"
         android:layout_weight="1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
@@ -16,7 +16,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:name="com.example.activity_session_6_exercise_2.views.ArticleFragment"
-        android:id="@+id/detail_fragment"
+        android:id="@+id/detail_recycler_view"
         android:layout_weight="2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
