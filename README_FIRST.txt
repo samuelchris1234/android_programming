@@ -11,3 +11,4 @@ Steps on how to get it working :
 7. Copy the images folder inside assets in Github, then make a new folder named "android" inside the installation directory\htdocs folder and paste it there.
 (For example, if the installation directory is D:\XAMPP then it should be D:\XAMPP\htdocs\android)
 8. Do the exact same thing as step 6 but this time with the movies.php file (No need to create the "android" folder again of course).
+9. And that's about it you can run the application inside Android Studio. (The website address 10.0.2.2 inside the code is default for the localhost site for AVD, if you want to use external device, you need to use WiFi and change the IP address inside the code to equal to the IP address of the host).
