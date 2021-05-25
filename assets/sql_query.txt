@@ -1,0 +1,14 @@
+CREATE DATABASE cinema
+
+CREATE TABLE movies(
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name LONGTEXT NOT NULL,
+image LONGTEXT,
+rating LONGTEXT NOT NULL,
+description LONGTEXT NOT NULL,
+airtime_1 TIME,
+airtime_2 TIME,
+airtime_3 TIME,
+airtime_4 TIME,
+airtime_5 TIME
+)
