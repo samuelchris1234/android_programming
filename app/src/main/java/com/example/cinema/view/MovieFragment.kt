@@ -58,7 +58,7 @@ class MovieFragment : ListFragment() {
     }
 
     companion object {
-        private const val URL = "http://10.0.2.2:8080/android/movies.php"
+        private const val URL = "http://10.0.2.2/android/movies.php"
     }
 
 }

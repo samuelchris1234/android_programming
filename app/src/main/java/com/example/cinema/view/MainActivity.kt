@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                             val movies = array.getJSONObject(i)
                             movieList.add(Movie(
                                     movies.getString("name"),
-                                    "http://10.0.2.2:8080/android/" + movies.getString("image"),
+                                    "http://10.0.2.2/android/" + movies.getString("image"),
                                     "Rating : " + movies.getString("rating"),
                                     movies.getString("description"),
                                     movies.getString("airtime_1"),
@@ -70,6 +70,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val URL = "http://10.0.2.2:8080/android/movies.php"
+        private const val URL = "http://10.0.2.2/android/movies.php"
     }
 }
