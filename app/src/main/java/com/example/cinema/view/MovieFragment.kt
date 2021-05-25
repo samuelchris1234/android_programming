@@ -35,8 +35,8 @@ class MovieFragment : ListFragment() {
                         for (i in 0 until array.length()) {
                             val movies = array.getJSONObject(i)
                             coverList.add(Movie(
+                                    movies.getString("name"),
                                     null,
-                                    "http://10.0.2.2:8080/android/" + movies.getString("image"),
                                     null,
                                     null,
                                     null,

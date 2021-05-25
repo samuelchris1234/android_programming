@@ -25,50 +25,51 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstancedState: Bundle?) {
 
         super.onCreate(savedInstancedState)
-        setContentView(R.layout.movie_details)
+        setContentView(R.layout.activity_main)
 
-        if(findViewById<View?>(R.id.fragment_container) != null){
-            if(savedInstancedState != null){
-                return
-            }
-
-            val leftFragment = MovieFragment()
-
-            supportFragmentManager.beginTransaction().add(R.id.fragment_container, leftFragment).commit()
-        }
-//        recyclerView = findViewById(R.id.recycler_view)
-//        recyclerView.setHasFixedSize(true)
-//        recyclerView.layoutManager = LinearLayoutManager(this)
+//        if(findViewById<View?>(R.id.fragment_container) != null){
+//            if(savedInstancedState != null){
+//                return
+//            }
 //
-//        val stringRequest = StringRequest(Request.Method.GET, URL,
-//                { response ->
-//                    try {
-//                        val array = JSONArray(response)
-//                        for (i in 0 until array.length()) {
-//                            val movies = array.getJSONObject(i)
-//                            movieList.add(Movie(
-//                                    movies.getString("name"),
-//                                    "http://10.0.2.2:8080/android/" + movies.getString("image"),
-//                                    "Rating : " + movies.getString("rating"),
-//                                    movies.getString("description"),
-//                                    movies.getString("airtime_1"),
-//                                    movies.getString("airtime_2"),
-//                                    movies.getString("airtime_3"),
-//                                    movies.getString("airtime_4"),
-//                                    movies.getString("airtime_5")
-//                            ))
-//                            val adapter = MovieAdapter(this, movieList)
-//                            recyclerView.adapter = adapter
-//                        }
-//                    } catch (e: JSONException) {
-//                        e.printStackTrace()
-//                    }
-//                }
-//        ) { }
-//        Volley.newRequestQueue(this).add(stringRequest)
+//            val leftFragment = MovieFragment()
+//
+//            supportFragmentManager.beginTransaction().add(R.id.fragment_container, leftFragment).commit()
+//        }
+
+        recyclerView = findViewById(R.id.recycler_view)
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val stringRequest = StringRequest(Request.Method.GET, URL,
+                { response ->
+                    try {
+                        val array = JSONArray(response)
+                        for (i in 0 until array.length()) {
+                            val movies = array.getJSONObject(i)
+                            movieList.add(Movie(
+                                    movies.getString("name"),
+                                    "http://10.0.2.2:8080/android/" + movies.getString("image"),
+                                    "Rating : " + movies.getString("rating"),
+                                    movies.getString("description"),
+                                    movies.getString("airtime_1"),
+                                    movies.getString("airtime_2"),
+                                    movies.getString("airtime_3"),
+                                    movies.getString("airtime_4"),
+                                    movies.getString("airtime_5")
+                            ))
+                            val adapter = MovieAdapter(this, movieList)
+                            recyclerView.adapter = adapter
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                }
+        ) { }
+        Volley.newRequestQueue(this).add(stringRequest)
     }
 
-//    companion object {
-//        private const val URL = "http://10.0.2.2:8080/android/movies.php"
-//    }
+    companion object {
+        private const val URL = "http://10.0.2.2:8080/android/movies.php"
+    }
 }
